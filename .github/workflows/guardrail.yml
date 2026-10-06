@@ -1,0 +1,43 @@
+name: Guardrail — no secrets in commits
+
+# Fail the build if a Supabase credential ever lands in the source tree.
+# The anon key is *supposed* to ship to the browser, but it must come from a
+# repository secret at build time, never from a committed file — otherwise a
+# leaked key is indistinguishable from the real one in git history.
+#
+# This runs on every push and PR. It is deliberately separate from deploy.yml
+# so a secret leak blocks the pipeline before the bundle is built.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  no-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fetch the full history so a key introduced in any commit fails.
+          fetch-depth: 0
+
+      - name: Scan for Supabase credentials
+        run: |
+          set -e
+          pattern='sb_publishable_[A-Za-z0-9_-]{16,}|service_role["'"'"']?\s*[:=]'
+          if git log -p --all | grep -E "$pattern"; then
+            echo "::error::A Supabase credential was found in git history."
+            echo "::error::Remove it, rotate the key in the Supabase dashboard, and rewrite history before pushing."
+            exit 1
+          fi
+          echo "No Supabase credentials in git history."
+
+      - name: Scan working tree for .env files
+        run: |
+          set -e
+          if git ls-files --error-unmatch .env .env.local .env.* 2>/dev/null; then
+            echo "::error::An .env file is tracked. Remove it from git and rotate any key it held."
+            exit 1
+          fi
+          echo "No .env files tracked."
