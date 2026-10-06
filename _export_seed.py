@@ -25,10 +25,10 @@ from store.models import Brand, Category, Product, PromoCode  # noqa: E402
 
 
 def cents(value):
-    """Decimal or string rand -> integer cents."""
+    """Decimal or string rand -> integer cents, or the SQL NULL literal."""
     if value is None:
-        return None
-    return int((Decimal(str(value)) * 100).to_integral_value())
+        return "NULL"
+    return str(int((Decimal(str(value)) * 100).to_integral_value()))
 
 
 def sql_str(value):
