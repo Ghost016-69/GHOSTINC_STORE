@@ -1,0 +1,84 @@
+name: Deploy GHOSTINC_STORE to GitHub Pages
+
+# Builds the static bundle and publishes dist/ to GitHub Pages.
+#
+# Required repository settings (Settings -> Pages -> Build and deployment):
+#   Source: GitHub Actions
+# Without that, the deploy step fails with "Get Pages site failed".
+#
+# Required secrets (Settings -> Secrets and variables -> Actions):
+#   VITE_SUPABASE_URL        e.g. https://abcdefgh.supabase.co
+#   VITE_SUPABASE_ANON_KEY   the anon publishable key
+#
+# NOTE: VITE_* values are inlined into the JavaScript bundle at build time and
+# are therefore public. That is expected — Supabase's anon key is designed to
+# ship to the browser, and RLS is what protects the data. Never put the
+# service_role key in this workflow.
+
+on:
+  push:
+    branches: ['main']
+  # Lets a failed deploy on main be replaced by a manual run.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; a new push cancels the one still running.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Test pricing against the legacy Django fixtures
+        run: npm test
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          # Must match the repository name, or asset URLs 404 on the subpath.
+          GITHUB_PAGES_BASE: '/GHOSTINC_STORE/'
+
+      - name: Verify the build produced index.html and 404.html
+        run: |
+          test -f dist/index.html  || { echo "::error::dist/index.html missing"; exit 1; }
+          test -f dist/404.html    || { echo "::error::dist/404.html missing"; exit 1; }
+          # Assets must be referenced under the subpath, not from "/".
+          grep -q '/GHOSTINC_STORE/assets/' dist/index.html \
+            || { echo "::error::asset paths are not prefixed with the Pages subpath"; exit 1; }
+          echo "Build output looks correct."
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

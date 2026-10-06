@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact | GHOSTINC</title>
+        <meta name="description" content="Contact the GHOSTINC store about stock, an order, or the code behind the shop.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="contact">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="section">
+                <div class="wrapper">
+                    <h1>Contact GHOSTINC</h1>
+                    <p class="section-intro">
+                        Questions about stock, an order, or the code behind the shop? Send a
+                        message and it is stored by the Django API, ready to read in the admin.
+                    </p>
+
+                    <div class="shop-layout">
+                        <div class="cart-summary">
+                            <h2>Reach us</h2>
+                            <p class="product-desc">
+                                <strong>Email</strong><br>hello@ghostinc.example
+                            </p>
+                            <p class="product-desc">
+                                <strong>Phone</strong><br>+27 31 000 0000
+                            </p>
+                            <p class="product-desc">
+                                <strong>Studio</strong><br>Level 2, 14 Circuit Road, Durban, 4001
+                            </p>
+                            <p class="product-desc">
+                                <strong>Hours</strong><br>Monday to Friday, 08:00 to 17:00 SAST
+                            </p>
+                            <p class="notice">
+                                Demo store: the address, email and phone number above are
+                                placeholders.
+                            </p>
+                        </div>
+
+                        <div class="cart-summary">
+                            <h2>Send a message</h2>
+                            <form class="checkout-form" data-contact-form novalidate>
+                                <div class="field">
+                                    <label for="name">Your name</label>
+                                    <input class="input" id="name" name="name"
+                                           autocomplete="name" required>
+                                </div>
+
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input class="input" id="email" name="email" type="email"
+                                           autocomplete="email" required>
+                                </div>
+
+                                <div class="field">
+                                    <label for="subject">Subject</label>
+                                    <input class="input" id="subject" name="subject"
+                                           placeholder="Stock, an order, or the code">
+                                </div>
+
+                                <div class="field">
+                                    <label for="message">Message</label>
+                                    <textarea class="textarea" id="message" name="message"
+                                              required></textarea>
+                                </div>
+
+                                <p class="form-status" data-contact-status></p>
+
+                                <button class="btn btn-primary btn-block" type="submit"
+                                        data-contact-submit>Send message</button>
+
+                                <p class="field-hint">
+                                    Messages are saved to the local database. Nothing is emailed.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

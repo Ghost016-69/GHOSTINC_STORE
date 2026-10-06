@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GHOSTINC | Electronics and tech accessories</title>
+        <meta name="description" content="GHOSTINC sells phones, laptops, audio, gaming gear, wearables, monitors, power and accessories. Free delivery over R 2 500.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <!-- Adds a "js" class so the stylesheet hides the mobile menu only when JavaScript can reopen it. -->
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="home">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="hero">
+                <div class="wrapper hero-inner">
+                    <div>
+                        <p class="hero-eyebrow">Electronics &amp; tech accessories</p>
+                        <h1 class="hero-title">Gear that earns its place on your desk.</h1>
+                        <p class="hero-lead">
+                            Phones, laptops, audio, gaming gear and the small accessories that
+                            make a setup work. Stocked in South Africa, priced in rands, and
+                            delivered free over R 2 500.
+                        </p>
+                        <div class="btn-row">
+                            <a class="btn btn-primary" href="shop.html">Shop the catalogue</a>
+                            <a class="btn btn-ghost" href="shop.html?on_sale=1">See what is on sale</a>
+                        </div>
+
+                        <ul class="hero-stats" data-stats>
+                            <li class="stat">
+                                <span class="stat-value" data-stat="products">&mdash;</span>
+                                <span class="stat-label">Products in stock</span>
+                            </li>
+                            <li class="stat">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Categories</span>
+                            </li>
+                            <li class="stat">
+                                <span class="stat-value">15%</span>
+                                <span class="stat-label">VAT included</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <img class="hero-art" src="../Images/products/displays.svg" alt=""
+                         width="800" height="600">
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="wrapper">
+                    <div class="section-head">
+                        <div>
+                            <h2 class="section-title">Shop by category</h2>
+                            <p class="section-intro">
+                                Eight aisles, from flagship handsets to the cable that finally
+                                charges everything at once.
+                            </p>
+                        </div>
+                        <a class="link-more" href="shop.html">Browse everything</a>
+                    </div>
+                    <div class="category-grid" data-categories>
+                        <div class="skeleton skeleton-card" aria-hidden="true"></div>
+                        <div class="skeleton skeleton-card" aria-hidden="true"></div>
+                        <div class="skeleton skeleton-card" aria-hidden="true"></div>
+                        <div class="skeleton skeleton-card" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section-alt">
+                <div class="wrapper">
+                    <div class="section-head">
+                        <div>
+                            <h2 class="section-title">Featured this week</h2>
+                            <p class="section-intro">
+                                The pieces the shop would buy itself, pulled straight from the
+                                catalogue.
+                            </p>
+                        </div>
+                        <a class="link-more" href="shop.html?sort=featured">All featured</a>
+                    </div>
+                    <div class="grid grid-cards" data-featured></div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="wrapper">
+                    <div class="section-head">
+                        <div>
+                            <h2 class="section-title">On sale <span class="accent">right now</span></h2>
+                            <p class="section-intro">
+                                Discounts come straight from the database, so what you see is what
+                                you pay.
+                            </p>
+                        </div>
+                        <a class="link-more" href="shop.html?on_sale=1">All sale items</a>
+                    </div>
+                    <div class="grid grid-cards" data-deals></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Accessories">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/><stop offset="1" stop-color="#0c2020"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#e8fffb"/><stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#1b2530" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.55"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <path d="M400 150c-74 0-134 52-134 116v98c0 64 60 116 134 116s134-52 134-116v-98c0-64-60-116-134-116z" fill="url(#ink)"/>
+  <rect x="386" y="182" width="28" height="72" rx="14" fill="#0b0f14" opacity="0.7"/>
+  <path d="M400 330v40" stroke="#0b0f14" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="8" fill="#2dd4bf" opacity="0.75">ACCESSORIES</text>
+</svg>

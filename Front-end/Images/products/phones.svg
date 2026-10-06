@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Phones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/><stop offset="1" stop-color="#131c25"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#eaf8fd"/><stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#1b2530" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.55"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <g fill="url(#ink)">
+    <path d="M400 118c-58 0-105 47-105 105v154c0 58 47 105 105 105s105-47 105-105V223c0-58-47-105-105-105zm0 46c33 0 59 26 59 59s-26 59-59 59-59-26-59-59 26-59 59-59z"/>
+  </g>
+  <rect x="345" y="196" width="110" height="180" rx="20" fill="#0b0f14" opacity="0.65"/>
+  <circle cx="470" cy="200" r="9" fill="#22d3ee" opacity="0.85"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="8" fill="#22d3ee" opacity="0.75">PHONES</text>
+</svg>

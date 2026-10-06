@@ -1,0 +1,10 @@
+# GHOSTINC_STORE back end
+#
+# These are the packages the store API needs. The workspace virtualenv at
+# My_Projects/.venv already provides all three, so simply running
+#     python manage.py runserver
+# from the root .venv is enough. The versions below are the ones that were
+# verified against this code.
+Django==6.0.5
+djangorestframework==3.17.1
+django-cors-headers==4.9.0

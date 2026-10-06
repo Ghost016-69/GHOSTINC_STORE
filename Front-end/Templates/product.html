@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product | GHOSTINC</title>
+        <meta name="description" content="Product details, specifications and stock for a GHOSTINC electronics item.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="product">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="section">
+                <div class="wrapper">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="shop.html" data-product-category-link>Category</a></li>
+                    </ol>
+
+                    <div class="empty" data-product-missing hidden>
+                        <h1 class="empty-title">We cannot show that product</h1>
+                        <p data-product-missing-text></p>
+                        <a class="btn btn-primary" href="shop.html">Back to the shop</a>
+                    </div>
+
+                    <div class="product-layout" data-product hidden>
+                        <div>
+                            <figure class="gallery-main">
+                                <img data-product-image src="../Images/products/phones.svg"
+                                     alt="" width="800" height="600">
+                            </figure>
+                        </div>
+
+                        <div class="product-info">
+                            <p class="product-brand" data-product-brand></p>
+                            <h1 data-product-name>Loading&hellip;</h1>
+                            <p class="rating" data-product-rating></p>
+                            <p class="product-price-lg" data-product-price></p>
+                            <p class="stock" data-product-stock></p>
+                            <p class="product-desc" data-product-short></p>
+
+                            <div class="buy-row">
+                                <div class="qty">
+                                    <button class="qty-btn" type="button" data-qty-minus
+                                            aria-label="Decrease quantity">&minus;</button>
+                                    <label class="visually-hidden" for="qty">Quantity</label>
+                                    <input class="qty-input" id="qty" type="text"
+                                           inputmode="numeric" value="1" data-qty-input>
+                                    <button class="qty-btn" type="button" data-qty-plus
+                                            aria-label="Increase quantity">+</button>
+                                </div>
+                                <button class="btn btn-primary" type="button" data-add-to-cart>
+                                    Add to cart
+                                </button>
+                                <span class="pill" data-product-availability></span>
+                            </div>
+
+                            <ul class="trust-list">
+                                <li>Free delivery on orders over R 2 500</li>
+                                <li>Two-year warranty on every item</li>
+                                <li>All prices include 15% VAT</li>
+                            </ul>
+
+                            <h2 class="filter-title">Overview</h2>
+                            <p class="product-desc" data-product-description></p>
+
+                            <h2 class="filter-title">Specifications</h2>
+                            <div data-product-specs></div>
+                            <p class="summary-note">SKU <span data-product-sku></span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section-alt" data-related-section hidden>
+                <div class="wrapper">
+                    <div class="section-head">
+                        <h2 class="section-title">More like this</h2>
+                        <a class="link-more" href="shop.html">See the whole shop</a>
+                    </div>
+                    <div class="grid grid-cards" data-related></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

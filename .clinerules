@@ -1,0 +1,56 @@
+# .clinerules — GHOSTINC_STORE
+#
+# Directs Cline (and any other agent) while scaffolding the new full-stack
+# app. Derived from FULLSTACK_GITHUB_PAGES_ARCHITECTURE.md section 3, step 1,
+# plus the rules that actually govern this codebase.
+
+- Tech Stack: React + Vite + TypeScript + Tailwind CSS
+- Backend Target: Supabase (PostgreSQL with RLS Enabled)
+- Deployment Target: GitHub Pages (`dist/` static output)
+
+## Rules
+
+- Do not use server-dependent Node.js runtime code in frontend builds.
+- Money calculations MUST be computed in integer cents (e.g., ZAR cents) to
+  match `PROJECT_CONTEXT.md`.
+
+- All public database mutations must be strictly governed by Row Level
+  Security (RLS) policies.
+
+## Money (non-negotiable)
+
+- Never use floating point for money in application code. No `parseFloat`, no
+  `* 0.15`, no `toFixed()` inside arithmetic.
+- VAT is `Math.floor((taxable_cents * 150 + 500) / 1000)`. Note that
+  `Math.round(taxable_cents * 0.15)` happens to agree with this at 15% for
+  every value up to R 1,000,000 — but the integer form is exact by construction
+  and matches the back end's `ROUND_HALF_UP`, so use it rather than relying on
+  the coincidence.
+- `src/utils/pricing.ts` is the single source of truth for cart maths on the
+  client. Do not re-implement it inline in a component.
+- Never trust a total computed in the browser when writing to the database.
+  Re-price server-side (see the `place_order` RPC in the migration).
+
+## Data and RLS
+
+- The anonymous Supabase key is public by design. Anything the anon key can
+  read is public. Assume so when writing policies.
+- Do not add a blanket `FOR SELECT USING (true)` policy to `orders` — it
+  exposes every customer's email and address. Use the `lookup_order` RPC.
+- Enabling RLS on a table with no policy denies everything. That is intentional;
+  add an explicit policy rather than reaching for `service_role`.
+
+## GitHub Pages
+
+- Vite `base` must be `/GHOSTINC_STORE/` in production, or every asset 404s on
+  the Pages subpath. Set `GITHUB_PAGES_BASE` to override when the repository is
+  renamed.
+- All asset and router links must respect `import.meta.env.BASE_URL`.
+
+## Preserving existing behaviour
+
+- Before changing pricing, catalogue fields or filters, read
+  `PROJECT_CONTEXT.md` and `FULLSTACK_GITHUB_PAGES_ARCHITECTURE.md`.
+- Several rules are duplicated between the legacy Django back end
+  (`Back-end/store/pricing.py`, `views.py`) and the TypeScript front end. Keep
+  them in step, and keep `Tests/` green: `python Tests/_run_tests.py`.

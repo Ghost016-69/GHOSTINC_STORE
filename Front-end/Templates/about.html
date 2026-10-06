@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About | GHOSTINC</title>
+        <meta name="description" content="How the GHOSTINC store is built: a dependency-free HTML, CSS and JavaScript front end talking to a Django REST Framework API.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="about">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="hero">
+                <div class="wrapper">
+                    <p class="hero-eyebrow">About the shop</p>
+                    <h1 class="hero-title">A store front built to be taken apart.</h1>
+                    <p class="hero-lead">
+                        GHOSTINC is a portfolio project: a real catalogue, a real database and
+                        a real checkout flow, built without a framework, a bundler or a single
+                        dependency in the browser.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="wrapper">
+                    <h2 class="section-title">Two halves, cleanly split</h2>
+                    <p class="section-intro">
+                        The pages are plain HTML, CSS and JavaScript served by a static file
+                        server. Everything with a price on it comes from a Django REST API on
+                        its own port.
+                    </p>
+
+                    <div class="grid grid-cards">
+                        <article class="card product-card">
+                            <div class="product-body">
+                                <h3 class="product-title">The front end</h3>
+                                <p class="product-desc">
+                                    Seven pages, one stylesheet and four small scripts. No
+                                    framework and no build step: the browser loads
+                                    <code>api.js</code>, <code>store.js</code>,
+                                    <code>ui.js</code> and <code>main.js</code>, and that is the
+                                    whole application.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="card product-card">
+                            <div class="product-body">
+                                <h3 class="product-title">The back end</h3>
+                                <p class="product-desc">
+                                    Django 6 with Django REST Framework and SQLite. The
+                                    catalogue, promo codes, orders and stock all live in the
+                                    database, and the Django admin is the shop manager.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="card product-card">
+                            <div class="product-body">
+                                <h3 class="product-title">The prices</h3>
+                                <p class="product-desc">
+                                    The browser stores what is in your cart, never what it
+                                    costs. Every total is re-quoted by the server, so a stale or
+                                    edited cart cannot buy anything at the wrong price.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section-alt" id="api">
+                <div class="wrapper">
+                    <h2 class="section-title">How the API works</h2>
+                    <p class="section-intro">
+                        Every endpoint the front end uses, mounted under <code>/api/</code> on
+                        port 8000.
+                    </p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <caption>GHOSTINC REST endpoints</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Method</th>
+                                    <th scope="col">Path</th>
+                                    <th scope="col">What it does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/api/products/</code></td>
+                                    <td>Search, filter, sort and page the catalogue</td>
+                                </tr>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/api/products/&lt;slug&gt;/</code></td>
+                                    <td>One product, with specs and related items</td>
+                                </tr>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/api/categories/</code></td>
+                                    <td>Categories with live product counts</td>
+                                </tr>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/api/brands/</code></td>
+                                    <td>Brands with live product counts</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/api/cart/price/</code></td>
+                                    <td>The authoritative cart total, VAT and delivery</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/api/promo/validate/</code></td>
+                                    <td>Checks a promo code</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/api/orders/</code></td>
+                                    <td>Places an order and reduces stock</td>
+                                </tr>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/api/orders/&lt;number&gt;/</code></td>
+                                    <td>Looks an order up by its reference</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/api/contact/</code></td>
+                                    <td>Logs a message from the contact page</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note">
+                        <p>
+                            <span class="product-brand">Try it</span>
+                            The API has a browsable interface. Open
+                            <a href="http://127.0.0.1:8000/api/" rel="noopener">127.0.0.1:8000/api/</a>
+                            while the back end is running.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="wrapper">
+                    <h2 class="section-title">Demo data, honest limits</h2>
+                    <p class="section-intro">
+                        The catalogue is seeded by a management command, so it is version
+                        controlled and reproducible rather than typed in by hand.
+                    </p>
+
+                    <ul class="tag-list">
+                        <li class="tag">30 products</li>
+                        <li class="tag">8 categories</li>
+                        <li class="tag">14 brands</li>
+                        <li class="tag">3 promo codes</li>
+                        <li class="tag">VAT at 15%</li>
+                        <li class="tag">Free delivery over R 2 500</li>
+                    </ul>
+
+                    <div class="notice notice-warn">
+                        <p>
+                            <strong>What is not here.</strong> No payment gateway, no customer
+                            accounts, no live shipping rates and no real photography. Brands
+                            and prices are invented for the demo. Placing an order writes it to
+                            the local database so the flow can be demonstrated end to end.
+                        </p>
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="shop.html">Look at the catalogue</a>
+                        <a class="btn btn-ghost" href="contact.html">Ask a question</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

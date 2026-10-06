@@ -1,0 +1,38 @@
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment. Only VITE_-prefixed vars reach the browser, but keep every
+# .env variant out of git anyway.
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime logs from the legacy local servers
+_django.log
+_django.err.log
+_web.log
+_web.err.log
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Django
+Back-end/db.sqlite3
+Back-end/staticfiles/
+
+# data.js IS committed: it is the offline fallback the legacy front end needs.
+# Do not ignore it.

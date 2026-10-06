@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Gaming">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/><stop offset="1" stop-color="#161f12"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#a3e635" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#a3e635" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#f2ffd9"/><stop offset="1" stop-color="#a3e635"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#1b2530" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.55"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <path d="M250 250h300c50 0 84 34 96 84l26 102c10 40-22 76-63 68l-86-16c-16-3-26-8-40-8h-166c-14 0-24 5-40 8l-86 16c-41 8-73-28-63-68l26-102c12-50 46-84 96-84z" fill="url(#ink)"/>
+  <g fill="#0b0f14" opacity="0.75">
+    <rect x="286" y="308" width="22" height="66" rx="8"/>
+    <rect x="264" y="330" width="66" height="22" rx="8"/>
+    <circle cx="512" cy="318" r="15"/>
+    <circle cx="546" cy="352" r="15"/>
+    <circle cx="478" cy="352" r="15"/>
+    <circle cx="512" cy="386" r="15"/>
+  </g>
+  <text x="400" y="540" text-anchor="middle" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="8" fill="#a3e635" opacity="0.75">GAMING</text>
+</svg>

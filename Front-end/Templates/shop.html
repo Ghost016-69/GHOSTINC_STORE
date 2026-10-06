@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shop | GHOSTINC</title>
+        <meta name="description" content="Browse every GHOSTINC product: phones, laptops, audio, gaming, wearables, displays, power and accessories. Filter by category, brand and price.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="shop">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="section">
+                <div class="wrapper">
+                    <h1>Shop</h1>
+                    <p class="section-intro">
+                        Every product in the shop, filtered and sorted by the API rather than
+                        in your browser, so the counts and the totals always agree.
+                    </p>
+
+                    <div class="shop-layout">
+                        <aside class="filters" aria-label="Filter products">
+                            <div class="filter-group">
+                                <h2 class="filter-title">Search</h2>
+                                <form class="search-form" role="search" data-search-form>
+                                    <label class="visually-hidden" for="search">Search products</label>
+                                    <input class="search-input" type="search" id="search"
+                                           name="search" placeholder="Search products&hellip;"
+                                           data-search-input>
+                                    <button class="btn btn-primary btn-sm" type="submit">Go</button>
+                                </form>
+                            </div>
+
+                            <div class="filter-group">
+                                <h2 class="filter-title">Category</h2>
+                                <div data-filter-categories></div>
+                            </div>
+
+                            <div class="filter-group">
+                                <h2 class="filter-title">Brand</h2>
+                                <div data-filter-brands></div>
+                            </div>
+
+                            <div class="filter-group">
+                                <h2 class="filter-title">Price (R)</h2>
+                                <div class="range-row">
+                                    <input class="input" type="number" min="0" step="50"
+                                           placeholder="Min" aria-label="Minimum price"
+                                           data-price-min>
+                                    <input class="input" type="number" min="0" step="50"
+                                           placeholder="Max" aria-label="Maximum price"
+                                           data-price-max>
+                                </div>
+                            </div>
+
+                            <div class="filter-group">
+                                <h2 class="filter-title">Availability</h2>
+                                <label class="check">
+                                    <input type="checkbox" data-filter-stock>
+                                    <span>In stock only</span>
+                                </label>
+                                <label class="check">
+                                    <input type="checkbox" data-filter-sale>
+                                    <span>On sale only</span>
+                                </label>
+                            </div>
+
+                            <div class="filter-group">
+                                <button class="btn btn-ghost btn-block btn-sm" type="button"
+                                        data-clear-filters>Clear filters</button>
+                            </div>
+                        </aside>
+
+                        <div>
+                            <div class="results-bar">
+                                <span data-shop-count>Loading&hellip;</span>
+                                <label>
+                                    <span class="visually-hidden">Sort by</span>
+                                    <select class="select" data-sort>
+                                        <option value="featured">Featured first</option>
+                                        <option value="price_asc">Price: low to high</option>
+                                        <option value="price_desc">Price: high to low</option>
+                                        <option value="rating">Best rated</option>
+                                        <option value="newest">Newest first</option>
+                                        <option value="name">Name A to Z</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="grid grid-cards" data-shop-results></div>
+
+                            <nav class="pagination" data-shop-pagination
+                                 aria-label="Pagination" hidden></nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

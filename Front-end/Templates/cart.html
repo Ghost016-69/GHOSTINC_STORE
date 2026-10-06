@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your cart | GHOSTINC</title>
+        <meta name="description" content="Review your GHOSTINC cart, apply a promo code and place a demo order.">
+        <link rel="icon" type="image/svg+xml" href="../Images/favicon.svg">
+        <script>document.documentElement.className += " js";</script>
+        <link rel="stylesheet" type="text/css" href="../Style/style.css">
+        <script src="../Scripts/data.js" defer></script>
+        <script src="../Scripts/offline.js" defer></script>
+        <script src="../Scripts/api.js" defer></script>
+        <script src="../Scripts/store.js" defer></script>
+        <script src="../Scripts/ui.js" defer></script>
+        <script src="../Scripts/main.js" defer></script>
+    </head>
+    <body data-page="cart">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <div class="wrapper">
+                <span>Free delivery over R 2 500</span>
+                <span>Use <strong>GHOST10</strong> for 10% off</span>
+                <span>Demo store &mdash; no real payments are taken</span>
+            </div>
+        </div>
+
+        <header class="site-header">
+            <div class="wrapper header-inner">
+                <a class="brand" href="index.html">
+                    <img class="brand-logo" src="../Images/logo.png" alt="GHOST INC." width="400" height="152">
+                    <span class="visually-hidden">GHOSTINC home</span>
+                </a>
+
+                <button class="nav-toggle" type="button" data-nav-toggle
+                        aria-expanded="false" aria-controls="primary-nav">
+                    <span class="nav-toggle-bars" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="visually-hidden">Toggle navigation menu</span>
+                </button>
+
+                <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn" type="button" data-open-cart
+                            aria-label="Open your cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        <span class="cart-count" data-cart-count hidden>0</span>
+                    </button>
+                    <button class="icon-btn theme-toggle" type="button" data-theme-toggle
+                            aria-pressed="false" aria-label="Switch to light theme">
+                        <span data-theme-icon aria-hidden="true">&#9728;&#65039;</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <section class="section">
+                <div class="wrapper">
+                    <h1>Your cart</h1>
+                    <p class="section-intro">
+                        Prices, delivery and VAT are quoted by the store API, so the total you
+                        see here is the total that gets ordered.
+                    </p>
+
+                    <div class="empty" data-cart-empty hidden>
+                        <h2 class="empty-title">Your cart is empty</h2>
+                        <p>Add something worth plugging in and it will appear here.</p>
+                        <a class="btn btn-primary" href="shop.html">Browse the shop</a>
+                    </div>
+
+                    <div class="cart-layout" data-cart-content>
+                        <div>
+                            <div class="results-bar">
+                                <span data-cart-count-label>0 items</span>
+                                <a class="link-more" href="shop.html">Keep shopping</a>
+                            </div>
+                            <ul class="cart-items" data-cart-items></ul>
+                        </div>
+
+                        <div class="cart-side">
+                            <div class="cart-summary">
+                                <h2>Order summary</h2>
+                                <div data-cart-summary></div>
+
+                                <form class="promo-form" data-promo-form>
+                                    <label class="visually-hidden" for="promo">Promo code</label>
+                                    <input class="input" id="promo" name="promo_code"
+                                           placeholder="Promo code, e.g. GHOST10"
+                                           autocomplete="off" data-promo-input>
+                                    <button class="btn btn-ghost btn-sm" type="submit">Apply</button>
+                                </form>
+                                <p class="promo-msg" data-promo-msg></p>
+                            </div>
+
+                            <div class="cart-summary">
+                                <h2>Delivery details</h2>
+                                <form class="checkout-form" data-checkout-form novalidate>
+                                    <div class="field-row field-row-2">
+                                        <div class="field">
+                                            <label for="first_name">First name</label>
+                                            <input class="input" id="first_name" name="first_name"
+                                                   autocomplete="given-name" required>
+                                        </div>
+                                        <div class="field">
+                                            <label for="last_name">Last name</label>
+                                            <input class="input" id="last_name" name="last_name"
+                                                   autocomplete="family-name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="field-row field-row-2">
+                                        <div class="field">
+                                            <label for="email">Email</label>
+                                            <input class="input" id="email" name="email" type="email"
+                                                   autocomplete="email" required>
+                                        </div>
+                                        <div class="field">
+                                            <label for="phone">Phone</label>
+                                            <input class="input" id="phone" name="phone" type="tel"
+                                                   autocomplete="tel">
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="address_line1">Street address</label>
+                                        <input class="input" id="address_line1" name="address_line1"
+                                               autocomplete="address-line1" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="address_line2">Address line 2</label>
+                                        <input class="input" id="address_line2" name="address_line2"
+                                               autocomplete="address-line2">
+                                    </div>
+
+                                    <div class="field-row field-row-2">
+                                        <div class="field">
+                                            <label for="city">City</label>
+                                            <input class="input" id="city" name="city"
+                                                   autocomplete="address-level2" required>
+                                        </div>
+                                        <div class="field">
+                                            <label for="province">Province</label>
+                                            <input class="input" id="province" name="province"
+                                                   autocomplete="address-level1">
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="postal_code">Postal code</label>
+                                        <input class="input" id="postal_code" name="postal_code"
+                                               autocomplete="postal-code" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="notes">Delivery notes</label>
+                                        <textarea class="textarea" id="notes" name="notes"
+                                                  placeholder="Gate code, best time to deliver&hellip;"></textarea>
+                                    </div>
+
+                                    <p class="form-status" data-checkout-status></p>
+
+                                    <button class="btn btn-primary btn-block" type="submit"
+                                            data-checkout-submit>Place order</button>
+
+                                    <p class="field-hint">
+                                        No payment is taken. The order is written to the Django
+                                        database and stock is reduced, so the demo behaves like the
+                                        real thing.
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper footer-inner">
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h2>GHOSTINC</h2>
+                        <p class="product-desc">
+                            An online electronics shop built as a portfolio project: a
+                            dependency-free front end talking to a Django REST API.
+                        </p>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Shop</h2>
+                        <ul>
+                            <li><a href="shop.html">All products</a></li>
+                            <li><a href="shop.html?on_sale=1">On sale</a></li>
+                            <li><a href="shop.html?in_stock=1">In stock</a></li>
+                            <li><a href="shop.html?sort=newest">Newest first</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a href="cart.html">Your cart</a></li>
+                            <li><a href="about.html">About the shop</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h2>Elsewhere</h2>
+                        <ul>
+                            <li><a href="about.html#api">How the API works</a></li>
+                            <li><a href="http://127.0.0.1:8000/api/" rel="noopener">Browsable API</a></li>
+                            <li><a href="http://127.0.0.1:8000/admin/" rel="noopener">Django admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span data-year>2026</span> GHOSTINC. A demo store &mdash; no orders
+                    are fulfilled and no payments are taken.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

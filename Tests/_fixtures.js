@@ -1,0 +1,333 @@
+/* GENERATED from _fixtures.json - do not edit. */
+window.GHOSTINC_FIXTURES = [
+  {
+    "label": "empty",
+    "items": [],
+    "promo_code": "",
+    "expected": {
+      "rows": [],
+      "item_count": 0,
+      "subtotal": "0.00",
+      "discount": "0.00",
+      "shipping": "0.00",
+      "vat": "0.00",
+      "total": "0.00",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "cheapest x1",
+    "items": [
+      {
+        "sku": "GH-AC-002",
+        "quantity": 1
+      }
+    ],
+    "promo_code": "",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-AC-002",
+          "slug": "ironclad-braided-usb-c-cable",
+          "name": "Ironclad Braided USB-C Cable",
+          "unit_price": "249.00",
+          "quantity": 1,
+          "line_total": "249.00",
+          "stock": 120,
+          "available": true
+        }
+      ],
+      "item_count": 1,
+      "subtotal": "249.00",
+      "discount": "0.00",
+      "shipping": "99.00",
+      "vat": "52.20",
+      "total": "400.20",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "cheapest x3",
+    "items": [
+      {
+        "sku": "GH-AC-002",
+        "quantity": 3
+      }
+    ],
+    "promo_code": "",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-AC-002",
+          "slug": "ironclad-braided-usb-c-cable",
+          "name": "Ironclad Braided USB-C Cable",
+          "unit_price": "249.00",
+          "quantity": 3,
+          "line_total": "747.00",
+          "stock": 120,
+          "available": true
+        }
+      ],
+      "item_count": 3,
+      "subtotal": "747.00",
+      "discount": "0.00",
+      "shipping": "99.00",
+      "vat": "126.90",
+      "total": "972.90",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "mid x2",
+    "items": [
+      {
+        "sku": "GH-AU-003",
+        "quantity": 2
+      }
+    ],
+    "promo_code": "",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-AU-003",
+          "slug": "reference-monitor-headset",
+          "name": "Reference Monitor Headset",
+          "unit_price": "3000.00",
+          "quantity": 2,
+          "line_total": "6000.00",
+          "stock": 2,
+          "available": true
+        }
+      ],
+      "item_count": 2,
+      "subtotal": "6000.00",
+      "discount": "0.00",
+      "shipping": "0.00",
+      "vat": "900.00",
+      "total": "6900.00",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "dearest x1",
+    "items": [
+      {
+        "sku": "GH-LP-002",
+        "quantity": 1
+      }
+    ],
+    "promo_code": "",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-LP-002",
+          "slug": "vanta-16-creator",
+          "name": "Vanta 16 Creator",
+          "unit_price": "44999.00",
+          "quantity": 1,
+          "line_total": "44999.00",
+          "stock": 4,
+          "available": true
+        }
+      ],
+      "item_count": 1,
+      "subtotal": "44999.00",
+      "discount": "0.00",
+      "shipping": "0.00",
+      "vat": "6749.85",
+      "total": "51748.85",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "cheapest+mid",
+    "items": [
+      {
+        "sku": "GH-AC-002",
+        "quantity": 1
+      },
+      {
+        "sku": "GH-AU-003",
+        "quantity": 1
+      }
+    ],
+    "promo_code": "",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-AC-002",
+          "slug": "ironclad-braided-usb-c-cable",
+          "name": "Ironclad Braided USB-C Cable",
+          "unit_price": "249.00",
+          "quantity": 1,
+          "line_total": "249.00",
+          "stock": 120,
+          "available": true
+        },
+        {
+          "sku": "GH-AU-003",
+          "slug": "reference-monitor-headset",
+          "name": "Reference Monitor Headset",
+          "unit_price": "3000.00",
+          "quantity": 1,
+          "line_total": "3000.00",
+          "stock": 2,
+          "available": true
+        }
+      ],
+      "item_count": 2,
+      "subtotal": "3249.00",
+      "discount": "0.00",
+      "shipping": "0.00",
+      "vat": "487.35",
+      "total": "3736.35",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "dearest x1 + GHOST10",
+    "items": [
+      {
+        "sku": "GH-LP-002",
+        "quantity": 1
+      }
+    ],
+    "promo_code": "GHOST10",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-LP-002",
+          "slug": "vanta-16-creator",
+          "name": "Vanta 16 Creator",
+          "unit_price": "44999.00",
+          "quantity": 1,
+          "line_total": "44999.00",
+          "stock": 4,
+          "available": true
+        }
+      ],
+      "item_count": 1,
+      "subtotal": "44999.00",
+      "discount": "4499.90",
+      "shipping": "0.00",
+      "vat": "6074.87",
+      "total": "46573.97",
+      "currency": "ZAR",
+      "promo": {
+        "code": "GHOST10",
+        "percent_off": 10,
+        "description": "10% off your order - welcome to GHOSTINC."
+      },
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "cheapest x3 + TECH15",
+    "items": [
+      {
+        "sku": "GH-AC-002",
+        "quantity": 3
+      }
+    ],
+    "promo_code": "TECH15",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-AC-002",
+          "slug": "ironclad-braided-usb-c-cable",
+          "name": "Ironclad Braided USB-C Cable",
+          "unit_price": "249.00",
+          "quantity": 3,
+          "line_total": "747.00",
+          "stock": 120,
+          "available": true
+        }
+      ],
+      "item_count": 3,
+      "subtotal": "747.00",
+      "discount": "112.05",
+      "shipping": "99.00",
+      "vat": "110.09",
+      "total": "844.04",
+      "currency": "ZAR",
+      "promo": {
+        "code": "TECH15",
+        "percent_off": 15,
+        "description": "15% off during the tech refresh sale."
+      },
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": ""
+    }
+  },
+  {
+    "label": "dearest x1 + EXPIRED20",
+    "items": [
+      {
+        "sku": "GH-LP-002",
+        "quantity": 1
+      }
+    ],
+    "promo_code": "EXPIRED20",
+    "expected": {
+      "rows": [
+        {
+          "sku": "GH-LP-002",
+          "slug": "vanta-16-creator",
+          "name": "Vanta 16 Creator",
+          "unit_price": "44999.00",
+          "quantity": 1,
+          "line_total": "44999.00",
+          "stock": 4,
+          "available": true
+        }
+      ],
+      "item_count": 1,
+      "subtotal": "44999.00",
+      "discount": "0.00",
+      "shipping": "0.00",
+      "vat": "6749.85",
+      "total": "51748.85",
+      "currency": "ZAR",
+      "promo": null,
+      "free_shipping_threshold": "2500.00",
+      "shipping_flat": "99.00",
+      "vat_rate": "0.15",
+      "promo_error": "That promo code is not valid."
+    }
+  }
+];

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GHOSTINC</title>
+    <script>
+      /*
+       * GitHub Pages has no rewrite rules, so this file catches every path
+       * that does not map to a real file. It bounces the visitor back into the
+       * single-page app, preserving where they were trying to go.
+       *
+       * The path is stored in sessionStorage rather than passed in the query
+       * string so it cannot be tampered with into an open redirect.
+       */
+      (function () {
+        var REPO = '/GHOSTINC_STORE/'
+        var redirect = sessionStorage.getItem('ghostinc:redirect')
+
+        if (redirect) {
+          sessionStorage.removeItem('ghostinc:redirect')
+          window.location.replace(redirect)
+          return
+        }
+
+        var path = window.location.pathname
+        var target = path.indexOf(REPO) === 0 ? path.slice(REPO.length) : path
+
+        window.location.replace(
+          window.location.origin +
+            REPO +
+            'index.html#' +
+            target +
+            window.location.search +
+            window.location.hash,
+        )
+      })()
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the store&hellip;</p>
+  </body>
+</html>

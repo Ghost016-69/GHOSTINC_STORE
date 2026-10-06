@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens lifted from the legacy stylesheet
+ * (Front-end/Style/style.css) so both apps read the same. */
+:root {
+  --bg: #0b0f14;
+  --bg-accent: #101822;
+  --surface: #141d27;
+  --surface-soft: #1b2634;
+  --text: #e8eef6;
+  --text-soft: #9aa9ba;
+  --border: #25323f;
+  --brand: #22d3ee;
+  --brand-strong: #7ee7f7;
+  --on-brand: #04222b;
+  --accent: #8b5cf6;
+  --sale: #f472b6;
+  --warn: #fbbf24;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: theme('fontFamily.sans');
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Component classes keep the legacy stylesheet's vocabulary (btn, input,
+ * card, pill) so the rebuilt pages read like the templates they replace. */
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-on;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply bg-brand text-brand-on hover:bg-brand-strong;
+  }
+  .btn-ghost {
+    @apply border border-ghost-border text-ghost-text hover:border-brand hover:text-brand;
+  }
+  .btn-block {
+    @apply w-full;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .card {
+    @apply rounded-xl border border-ghost-border bg-ghost-surface;
+  }
+
+  .input,
+  .textarea {
+    @apply w-full rounded-lg border border-ghost-border bg-ghost-surface px-3 py-2 text-sm text-ghost-text placeholder:text-ghost-text-soft focus:border-brand focus:outline-none;
+  }
+  .label {
+    @apply mb-1 block text-sm font-semibold text-ghost-text;
+  }
+  .check {
+    @apply flex cursor-pointer items-center gap-2 text-sm text-ghost-text-soft hover:text-ghost-text;
+  }
+  .form-status {
+    @apply min-h-[1.25rem] text-sm;
+  }
+  .field-hint {
+    @apply text-xs text-ghost-text-soft;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand;
+  }
+  .page-title {
+    @apply text-3xl font-extrabold tracking-tight;
+  }
+  .section-title {
+    @apply text-2xl font-extrabold tracking-tight;
+  }
+  .section-intro {
+    @apply mt-2 max-w-2xl text-ghost-text-soft;
+  }
+  .link-more {
+    @apply text-sm font-semibold text-brand hover:text-brand-strong;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full border border-ghost-border bg-ghost-surface-soft px-3 py-1 text-xs;
+  }
+  .notice {
+    @apply rounded-lg border border-ghost-border bg-ghost-surface p-4 text-sm text-ghost-text-soft;
+  }
+
+  .empty-state {
+    @apply card flex flex-col items-center gap-3 p-10 text-center;
+  }
+}
+
