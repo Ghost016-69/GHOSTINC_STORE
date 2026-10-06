@@ -44,18 +44,18 @@ export default function Layout() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-ghost-border bg-ink/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
-          <Link to="/" className="flex items-center" aria-label="GHOSTINC home">
+        <div className="flex items-center justify-between gap-4 px-5 py-4">
+          <Link to="/" className="flex flex-shrink-0 items-center" aria-label="GHOSTINC home">
             <img
               src={`${import.meta.env.BASE_URL}logo.png`}
               alt="GHOST INC."
-              width={280}
-              height={105}
-              className="h-20 w-auto"
+              width={340}
+              height={128}
+              className="h-24 w-auto"
             />
           </Link>
 
-          <nav aria-label="Primary">
+          <nav aria-label="Primary" className="flex flex-shrink-0 items-center gap-6">
             <ul className="flex items-center gap-6 text-sm font-semibold">
               {NAV_ITEMS.map((item) => (
                 <li key={item.to}>
@@ -73,24 +73,24 @@ export default function Layout() {
                 </li>
               ))}
             </ul>
-          </nav>
 
-          <Link
-            to="/cart"
-            className="relative rounded-lg border border-ghost-border px-3 py-2 text-sm transition-colors hover:border-brand"
-            aria-label={
-              itemCount > 0
-                ? `Open your cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`
-                : 'Open your cart'
-            }
-          >
-            <span aria-hidden="true">🛒</span>
-            {itemCount > 0 ? (
-              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-xs font-bold text-brand-on">
-                {itemCount}
-              </span>
-            ) : null}
-          </Link>
+            <Link
+              to="/cart"
+              className="relative rounded-lg border border-ghost-border px-3 py-2 text-sm transition-colors hover:border-brand"
+              aria-label={
+                itemCount > 0
+                  ? `Open your cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`
+                  : 'Open your cart'
+              }
+            >
+              <span aria-hidden="true">🛒</span>
+              {itemCount > 0 ? (
+                <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-xs font-bold text-brand-on">
+                  {itemCount}
+                </span>
+              ) : null}
+            </Link>
+          </nav>
         </div>
       </header>
 
