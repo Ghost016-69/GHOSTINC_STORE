@@ -19,7 +19,7 @@ export default function ProductCard({ product }: { product: CatalogProduct }) {
   const image = productImageUrl(product.image_path)
 
   return (
-    <article className="card flex flex-col overflow-hidden">
+    <article className="card-elevated flex flex-col overflow-hidden transition-colors hover:border-brand">
       <Link
         to={`/product/${product.slug}`}
         className="block border-b border-ghost-border bg-ghost-surface-soft"
@@ -27,7 +27,7 @@ export default function ProductCard({ product }: { product: CatalogProduct }) {
         {image ? (
           <img src={image} alt="" width={800} height={600} className="h-40 w-full object-cover" />
         ) : (
-          <div className="h-40 w-full bg-gradient-to-br from-ghost-surface-soft to-ghost-bg" />
+          <div className="h-40 w-full bg-gradient-to-br from-ghost-surface-soft to-ink" />
         )}
       </Link>
 

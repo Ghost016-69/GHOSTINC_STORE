@@ -28,12 +28,12 @@ export default function Layout() {
   }, [pathname])
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-ink text-ghost-text">
       <a className="skip-link" href="#main">
         Skip to content
       </a>
 
-      <div className="border-b border-ghost-border bg-ghost-surface">
+      <div className="border-b border-ghost-border bg-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-6 gap-y-1 px-5 py-2 text-xs text-ghost-text-soft">
           <span>Free delivery over R 2 500</span>
           <span>
@@ -43,20 +43,20 @@ export default function Layout() {
         </div>
       </div>
 
-      <header className="border-b border-ghost-border bg-ghost-bg/90 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-ghost-border bg-ink/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
           <Link to="/" className="flex items-center" aria-label="GHOSTINC home">
             <img
               src={`${import.meta.env.BASE_URL}logo.png`}
               alt="GHOST INC."
-              width={132}
-              height={50}
-              className="h-10 w-auto"
+              width={280}
+              height={105}
+              className="h-20 w-auto"
             />
           </Link>
 
           <nav aria-label="Primary">
-            <ul className="flex items-center gap-5 text-sm font-semibold">
+            <ul className="flex items-center gap-6 text-sm font-semibold">
               {NAV_ITEMS.map((item) => (
                 <li key={item.to}>
                   <NavLink
@@ -77,7 +77,7 @@ export default function Layout() {
 
           <Link
             to="/cart"
-            className="relative rounded-lg border border-ghost-border px-3 py-2 text-sm hover:border-brand"
+            className="relative rounded-lg border border-ghost-border px-3 py-2 text-sm transition-colors hover:border-brand"
             aria-label={
               itemCount > 0
                 ? `Open your cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`
@@ -98,11 +98,19 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="mt-12 border-t border-ghost-border bg-ghost-surface">
+      <footer className="mt-12 border-t border-ghost-border bg-ink">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h2 className="text-base font-extrabold">GHOSTINC</h2>
-            <p className="mt-2 text-sm text-ghost-text-soft">
+            <Link to="/" className="flex items-center">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="GHOST INC."
+                width={210}
+                height={79}
+                className="h-14 w-auto"
+              />
+            </Link>
+            <p className="mt-3 text-sm text-ghost-text-soft">
               An online electronics shop built as a portfolio project: a React front end on
               GitHub Pages with a Supabase database behind it.
             </p>
@@ -161,4 +169,3 @@ export default function Layout() {
     </div>
   )
 }
-

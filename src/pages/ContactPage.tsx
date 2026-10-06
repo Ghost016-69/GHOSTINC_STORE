@@ -73,7 +73,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10">
+    <section className="ink-canvas mx-auto max-w-6xl px-5 py-10">
       <h1 className="page-title">Contact GHOSTINC</h1>
       <p className="section-intro">
         Questions about stock, an order, or the code behind the shop? Send a message and it is

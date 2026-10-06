@@ -11,7 +11,7 @@ export default function NotFoundPage() {
   usePageTitle('Page not found')
 
   return (
-    <section className="mx-auto max-w-3xl px-5 py-16">
+    <section className="ink-canvas mx-auto max-w-3xl px-5 py-16">
       <div className="empty-state">
         <p className="eyebrow">404</p>
         <h1 className="text-2xl font-extrabold">We cannot find that page</h1>

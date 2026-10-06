@@ -159,7 +159,7 @@ export default function ShopPage() {
     onSaleOnly
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10">
+    <section className="ink-canvas mx-auto max-w-6xl px-5 py-10">
       <h1 className="page-title">Shop</h1>
       <p className="section-intro">
         Every product in the shop, filtered and sorted in one place, so the counts and the
@@ -167,7 +167,7 @@ export default function ShopPage() {
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[16rem_1fr]">
-        <aside className="card h-fit p-4" aria-label="Filter products">
+        <aside className="card-elevated h-fit p-4" aria-label="Filter products">
           <div>
             <label className="label" htmlFor="shop-search">
               Search

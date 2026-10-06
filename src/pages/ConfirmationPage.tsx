@@ -95,7 +95,7 @@ export default function ConfirmationPage() {
 
   if (phase === 'loading') {
     return (
-      <section className="mx-auto max-w-3xl px-5 py-16 text-center">
+      <section className="ink-canvas mx-auto max-w-3xl px-5 py-16 text-center">
         <p className="text-ghost-text-soft">Looking up order {orderParam}…</p>
       </section>
     )
@@ -103,7 +103,7 @@ export default function ConfirmationPage() {
 
   if (phase !== 'ready' && !order) {
     return (
-      <section className="mx-auto max-w-3xl px-5 py-16">
+      <section className="ink-canvas mx-auto max-w-3xl px-5 py-16">
         <div className="empty-state">
           <h1 className="text-xl font-bold">
             {phase === 'error' ? 'We cannot load that order' : 'We cannot find that order'}
@@ -148,7 +148,7 @@ export default function ConfirmationPage() {
   ]
 
   return (
-    <section className="mx-auto max-w-4xl px-5 py-12">
+    <section className="ink-canvas mx-auto max-w-4xl px-5 py-12">
       <p className="eyebrow">Order confirmed</p>
       <h1 className="page-title mt-2">
         Thank you — order <span className="text-brand">{order.order_number}</span>
@@ -165,7 +165,7 @@ export default function ConfirmationPage() {
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_20rem]">
-        <div className="card p-5">
+        <div className="card-elevated p-5">
           <h2 className="text-base font-bold">What you ordered</h2>
           <ul className="mt-3 divide-y divide-ghost-border">
             {order.items.map((item, index) => (
@@ -186,14 +186,14 @@ export default function ConfirmationPage() {
         </div>
 
         <div className="space-y-4">
-          <div className="card p-5">
+          <div className="card-elevated p-5">
             <h2 className="text-base font-bold">Totals</h2>
             <div className="mt-3">
               <TotalsList rows={rows} totalText={formatCents(order.total_cents)} />
             </div>
           </div>
 
-          <div className="card p-5">
+          <div className="card-elevated p-5">
             <h2 className="text-base font-bold">Delivering to</h2>
             <p className="mt-2 text-sm font-semibold">
               {customerName || order.customer_name}

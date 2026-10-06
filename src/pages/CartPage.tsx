@@ -204,7 +204,7 @@ export default function CartPage() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10">
+    <section className="ink-canvas mx-auto max-w-6xl px-5 py-10">
       <h1 className="page-title">Your cart</h1>
       <p className="section-intro">
         Prices, delivery and VAT are quoted from the catalogue, so the total you see here is
@@ -241,7 +241,7 @@ export default function CartPage() {
 
             <ul className="mt-3 space-y-3">
               {resolved.map(({ line, product }) => (
-                <li key={line.sku} className="card flex flex-wrap items-center gap-4 p-4">
+                <li key={line.sku} className="card-elevated flex flex-wrap items-center gap-4 p-4">
                   {line.image ? (
                     <img
                       src={line.image}
@@ -328,7 +328,7 @@ export default function CartPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="card p-4">
+            <div className="card-elevated p-4">
               <h2 className="text-base font-bold">Order summary</h2>
 
               <div className="mt-3">
@@ -368,7 +368,7 @@ export default function CartPage() {
               ) : null}
             </div>
 
-            <form className="card space-y-3 p-4" onSubmit={submitOrder}>
+            <form className="card-elevated space-y-3 p-4" onSubmit={submitOrder}>
               <h2 className="text-base font-bold">Delivery details</h2>
 
               <div className="grid grid-cols-2 gap-3">

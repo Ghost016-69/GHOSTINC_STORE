@@ -14,7 +14,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="border-b border-ghost-border bg-ghost-surface">
+      <section className="ink-canvas border-b border-ghost-border bg-ghost-surface">
         <div className="mx-auto max-w-6xl px-5 py-14">
           <p className="eyebrow">About the shop</p>
           <h1 className="page-title mt-3">A store front built to be taken apart.</h1>
@@ -33,8 +33,8 @@ export default function AboutPage() {
           comes from Postgres through Supabase's data API.
         </p>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <article className="card p-5">
+<div className="mt-6 grid gap-4 md:grid-cols-3">
+          <article className="card-elevated p-5">
             <h3 className="font-bold">The front end</h3>
             <p className="mt-2 text-sm text-ghost-text-soft">
               React + Vite + TypeScript, built to static files and deployed by GitHub Actions.
@@ -43,7 +43,7 @@ export default function AboutPage() {
             </p>
           </article>
 
-          <article className="card p-5">
+          <article className="card-elevated p-5">
             <h3 className="font-bold">The back end</h3>
             <p className="mt-2 text-sm text-ghost-text-soft">
               Supabase: PostgreSQL with Row Level Security on every table. The catalogue is
@@ -52,7 +52,7 @@ export default function AboutPage() {
             </p>
           </article>
 
-          <article className="card p-5">
+          <article className="card-elevated p-5">
             <h3 className="font-bold">The prices</h3>
             <p className="mt-2 text-sm text-ghost-text-soft">
               The browser stores what is in your cart, never what it costs. Totals are shown
@@ -64,7 +64,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-ghost-border bg-ghost-surface" id="api">
+      <section className="border-y border-ghost-border bg-ink" id="api">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <h2 className="section-title">How the API works</h2>
           <p className="section-intro">
@@ -130,7 +130,7 @@ export default function AboutPage() {
           <span className="pill">Free delivery over R 2 500</span>
         </div>
 
-        <div className="notice mt-6 border-brand/40">
+        <div className="notice mt-6 border-brand/40 bg-ink">
           <p>
             <strong className="text-ghost-text">What is not here.</strong> No payment gateway,
             no customer accounts, no live shipping rates and no real photography. Brands and

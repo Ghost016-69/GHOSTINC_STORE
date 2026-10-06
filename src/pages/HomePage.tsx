@@ -33,8 +33,9 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="border-b border-ghost-border bg-ghost-surface">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-14 lg:grid-cols-2">
+      {/* Hero */}
+      <section className="ink-canvas relative border-b border-ghost-border">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-16 lg:grid-cols-2">
           <div>
             <p className="eyebrow">Electronics &amp; tech accessories</p>
             <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -74,16 +75,20 @@ export default function HomePage() {
             </dl>
           </div>
 
-          <img
-            src={`${import.meta.env.BASE_URL}images/products/displays.svg`}
-            alt=""
-            width={800}
-            height={600}
-            className="hidden w-full rounded-2xl border border-ghost-border lg:block"
-          />
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-brand/20 to-transparent blur-3xl" />
+            <img
+              src={`${import.meta.env.BASE_URL}images/products/displays.svg`}
+              alt=""
+              width={800}
+              height={600}
+              className="relative hidden w-full rounded-2xl border border-ghost-border lg:block"
+            />
+          </div>
         </div>
       </section>
 
+      {/* Category rail */}
       <section className="mx-auto max-w-6xl px-5 py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -103,7 +108,7 @@ export default function HomePage() {
             <Link
               key={category.id}
               to={`/shop?category=${category.slug}`}
-              className="card p-4 transition-colors hover:border-brand"
+              className="card-elevated p-4 transition-colors hover:border-brand"
             >
               <span className="text-2xl" aria-hidden="true">
                 {category.icon ?? '▸'}
@@ -117,6 +122,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Featured this week */}
       <section className="border-y border-ghost-border bg-ghost-surface">
         <div className="mx-auto max-w-6xl px-5 py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -131,7 +137,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <CatalogueNotice />
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {featured.map((product) => (
@@ -142,6 +148,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* On sale */}
       <section className="mx-auto max-w-6xl px-5 py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -170,4 +177,3 @@ export default function HomePage() {
     </>
   )
 }
-

@@ -2,37 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens lifted from the legacy stylesheet
- * (Front-end/Style/style.css) so both apps read the same. */
+/* GHOSTINC — monochrome design system.
+ *
+ * The shell is black & white: ink-black surfaces, paper-white text, a tonal
+ * scale for dividers and muted copy. The only colour in the product is the
+ * logo's cyan accent, so the brand hue is used sparingly — a focus ring, an
+ * active state, a price — to frame it rather than compete with it. */
+
 :root {
-  --bg: #0b0f14;
-  --bg-accent: #101822;
-  --surface: #141d27;
-  --surface-soft: #1b2634;
-  --text: #e8eef6;
-  --text-soft: #9aa9ba;
-  --border: #25323f;
-  --brand: #22d3ee;
-  --brand-strong: #7ee7f7;
-  --on-brand: #04222b;
-  --accent: #8b5cf6;
-  --sale: #f472b6;
-  --warn: #fbbf24;
   color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: theme('fontFamily.sans');
+  background-color: var(--ink, #070707);
+  color: var(--paper, #f7f7f7);
+  font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
+}
+
+/* Subtle dot-grid on hero surfaces so the black canvas reads as designed. */
+.ink-canvas {
+  background-color: #070707;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--brand, #22d3ee);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -47,21 +53,20 @@ body {
   }
 }
 
-/* Component classes keep the legacy stylesheet's vocabulary (btn, input,
- * card, pill) so the rebuilt pages read like the templates they replace. */
+/* Component vocabulary — keep the legacy names so pages keep working. */
 @layer components {
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-on;
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-paper focus:ring-2 focus:ring-brand;
   }
 
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40;
   }
   .btn-primary {
-    @apply bg-brand text-brand-on hover:bg-brand-strong;
+    @apply bg-paper text-ink hover:bg-white;
   }
   .btn-ghost {
-    @apply border border-ghost-border text-ghost-text hover:border-brand hover:text-brand;
+    @apply border border-ghost-border text-ghost-text hover:border-ghost-text hover:text-ghost-text;
   }
   .btn-block {
     @apply w-full;
@@ -73,10 +78,13 @@ body {
   .card {
     @apply rounded-xl border border-ghost-border bg-ghost-surface;
   }
+  .card-elevated {
+    @apply rounded-xl border border-ghost-border bg-ghost-surface shadow-card;
+  }
 
   .input,
   .textarea {
-    @apply w-full rounded-lg border border-ghost-border bg-ghost-surface px-3 py-2 text-sm text-ghost-text placeholder:text-ghost-text-soft focus:border-brand focus:outline-none;
+    @apply w-full rounded-lg border border-ghost-border bg-ghost-surface px-3 py-2 text-sm text-ghost-text placeholder:text-ghost-text-soft focus:border-ghost-text focus:outline-none focus:ring-1 focus:ring-ghost-text;
   }
   .label {
     @apply mb-1 block text-sm font-semibold text-ghost-text;
@@ -92,13 +100,13 @@ body {
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand;
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-ghost-text-soft;
   }
   .page-title {
-    @apply text-3xl font-extrabold tracking-tight;
+    @apply text-4xl font-extrabold tracking-tight sm:text-5xl;
   }
   .section-title {
-    @apply text-2xl font-extrabold tracking-tight;
+    @apply text-2xl font-extrabold tracking-tight sm:text-3xl;
   }
   .section-intro {
     @apply mt-2 max-w-2xl text-ghost-text-soft;
@@ -108,7 +116,7 @@ body {
   }
 
   .pill {
-    @apply inline-flex items-center gap-1 rounded-full border border-ghost-border bg-ghost-surface-soft px-3 py-1 text-xs;
+    @apply inline-flex items-center gap-1 rounded-full border border-ghost-border bg-ghost-surface-soft px-3 py-1 text-xs text-ghost-text;
   }
   .notice {
     @apply rounded-lg border border-ghost-border bg-ghost-surface p-4 text-sm text-ghost-text-soft;
@@ -117,5 +125,9 @@ body {
   .empty-state {
     @apply card flex flex-col items-center gap-3 p-10 text-center;
   }
-}
 
+  /* Thin horizontal rule used between sections — a hairline, not a panel. */
+  .hairline {
+    @apply h-px w-full bg-ghost-border;
+  }
+}

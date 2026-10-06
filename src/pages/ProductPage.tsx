@@ -47,7 +47,7 @@ export default function ProductPage() {
   const image = product ? productImageUrl(product.image_path) : null
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10">
+    <section className="ink-canvas mx-auto max-w-6xl px-5 py-10">
       <nav aria-label="Breadcrumb">
         <ol className="flex flex-wrap gap-2 text-sm text-ghost-text-soft">
           <li>
@@ -90,11 +90,11 @@ export default function ProductPage() {
       {product ? (
         <>
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
-            <figure className="card overflow-hidden">
+            <figure className="card-elevated overflow-hidden">
               {image ? (
                 <img src={image} alt="" width={800} height={600} className="w-full object-cover" />
               ) : (
-                <div className="aspect-[4/3] w-full bg-gradient-to-br from-ghost-surface-soft to-ghost-bg" />
+                <div className="aspect-[4/3] w-full bg-gradient-to-br from-ghost-surface-soft to-ink" />
               )}
             </figure>
 
@@ -140,7 +140,7 @@ export default function ProductPage() {
               ) : null}
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <div className="flex items-center rounded-lg border border-ghost-border">
+                <div className="flex items-center rounded-lg border border-ghost-border bg-ghost-surface">
                   <button
                     type="button"
                     className="px-3 py-2 text-lg"

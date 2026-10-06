@@ -17,7 +17,7 @@ export default function CatalogueNotice() {
 
   if (status === 'loading') {
     return (
-      <div className="card animate-pulse p-4">
+      <div className="card-elevated animate-pulse p-4">
         <p className="text-sm text-ghost-text-soft">Loading the catalogue…</p>
       </div>
     )
@@ -25,7 +25,7 @@ export default function CatalogueNotice() {
 
   if (status === 'unconfigured') {
     return (
-      <div className="notice border-brand/40" role="status">
+      <div className="notice border-brand/40 bg-ink" role="status">
         <p className="font-semibold text-ghost-text">Supabase is not configured yet.</p>
         <p className="mt-1">
           Copy <code className="text-brand">.env.example</code> to{' '}
@@ -39,7 +39,7 @@ export default function CatalogueNotice() {
   }
 
   return (
-    <div className="notice border-sale/40" role="alert">
+    <div className="notice border-sale/40 bg-ink" role="alert">
       <p className="font-semibold text-ghost-text">Could not reach Supabase.</p>
       {error ? <p className="mt-1 text-sale">{error}</p> : null}
       <button type="button" className="btn btn-ghost btn-sm mt-3" onClick={reload}>
