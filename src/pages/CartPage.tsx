@@ -241,7 +241,7 @@ export default function CartPage() {
 
             <ul className="mt-3 space-y-3">
               {resolved.map(({ line, product }) => (
-                <li key={line.sku} className="card-elevated flex flex-wrap items-center gap-4 p-4">
+                <li key={line.sku} className="card-elevated flex flex-wrap items-center gap-3 p-4 sm:gap-4">
                   {line.image ? (
                     <img
                       src={line.image}
@@ -304,7 +304,7 @@ export default function CartPage() {
                     </div>
                   ) : null}
 
-                  <p className="w-24 text-right font-bold">
+                  <p className="w-20 text-right font-bold sm:w-24">
                     {product ? formatCents(product.price_cents * line.quantity) : '—'}
                   </p>
 
@@ -371,7 +371,7 @@ export default function CartPage() {
             <form className="card-elevated space-y-3 p-4" onSubmit={submitOrder}>
               <h2 className="text-base font-bold">Delivery details</h2>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="label" htmlFor="first_name">First name</label>
                   <input
@@ -396,7 +396,7 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="label" htmlFor="email">Email</label>
                   <input
@@ -445,7 +445,7 @@ export default function CartPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="label" htmlFor="city">City</label>
                   <input

@@ -10,7 +10,7 @@
  * memory (see CatalogueContext). Page size 12 and the sort keys match the
  * Django API (store/views.py::SORT_OPTIONS), so results order identically.
  */
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import CatalogueNotice from '../components/CatalogueNotice'
@@ -60,6 +60,9 @@ export default function ShopPage() {
 
   const { status, products, categories, brands } = useCatalogue()
   const [params, setParams] = useSearchParams()
+  // Phones get the filter panel behind a toggle: eight categories plus
+  // fourteen brands would otherwise push the product grid far down the page.
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   const search = params.get('search') ?? ''
   const category = params.get('category') ?? ''
@@ -166,8 +169,34 @@ export default function ShopPage() {
         totals always agree.
       </p>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[16rem_1fr]">
-        <aside className="card-elevated h-fit p-4" aria-label="Filter products">
+      <div className="mt-6 flex items-center justify-between gap-3 lg:hidden">
+        <button
+          type="button"
+          className="btn btn-ghost btn-sm"
+          aria-expanded={filtersOpen}
+          aria-controls="shop-filters"
+          onClick={() => setFiltersOpen((open) => !open)}
+        >
+          {filtersOpen ? 'Hide filters' : 'Show filters'}
+          {hasFilters ? ' · active' : ''}
+        </button>
+        {hasFilters ? (
+          <button
+            type="button"
+            className="link-more"
+            onClick={() => setParams(new URLSearchParams(), { replace: true })}
+          >
+            Clear filters
+          </button>
+        ) : null}
+      </div>
+
+      <div className="mt-4 grid gap-6 lg:mt-8 lg:grid-cols-[16rem_1fr]">
+        <aside
+          id="shop-filters"
+          className={`card-elevated h-fit p-4 ${filtersOpen ? '' : 'hidden'} lg:block`}
+          aria-label="Filter products"
+        >
           <div>
             <label className="label" htmlFor="shop-search">
               Search

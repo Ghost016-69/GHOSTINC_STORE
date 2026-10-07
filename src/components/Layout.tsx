@@ -6,7 +6,7 @@
  * Every link is a react-router <Link> so navigation stays inside the SPA; the
  * router's basename (src/main.tsx) keeps them working under /GHOSTINC_STORE/.
  */
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { useCart } from '../state/CartContext'
@@ -21,10 +21,13 @@ const NAV_ITEMS = [
 export default function Layout() {
   const { itemCount } = useCart()
   const { pathname } = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  // A new route is a new "page": start at the top, like a document load.
+  // A new route is a new "page": start at the top, like a document load — and
+  // collapse the mobile menu so it never covers the page it just navigated to.
   useEffect(() => {
     window.scrollTo(0, 0)
+    setMenuOpen(false)
   }, [pathname])
 
   return (
@@ -44,35 +47,38 @@ export default function Layout() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-ghost-border bg-ink/90 backdrop-blur">
-        <div className="flex items-center justify-between gap-4 px-5 py-4">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 lg:gap-4 lg:px-5 lg:py-4">
           <Link to="/" className="flex flex-shrink-0 items-center" aria-label="GHOSTINC home">
             <img
               src={`${import.meta.env.BASE_URL}logo.png`}
               alt="GHOST INC."
               width={340}
               height={128}
-              className="h-24 w-auto"
+              className="h-12 w-auto sm:h-14 lg:h-24"
             />
           </Link>
 
-          <nav aria-label="Primary" className="flex flex-shrink-0 items-center gap-6">
-            <ul className="flex items-center gap-6 text-sm font-semibold">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.to}>
-                  <NavLink
-                    to={item.to}
-                    end={item.end}
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-brand'
-                        : 'text-ghost-text-soft transition-colors hover:text-ghost-text'
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
+          <div className="flex items-center gap-2 lg:gap-6">
+            {/* Primary nav sits beside the logo from lg up… */}
+            <nav aria-label="Primary" className="hidden lg:block">
+              <ul className="flex items-center gap-6 text-sm font-semibold">
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.to}>
+                    <NavLink
+                      to={item.to}
+                      end={item.end}
+                      className={({ isActive }) =>
+                        isActive
+                          ? 'text-brand'
+                          : 'text-ghost-text-soft transition-colors hover:text-ghost-text'
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
             <Link
               to="/cart"
@@ -90,8 +96,46 @@ export default function Layout() {
                 </span>
               ) : null}
             </Link>
-          </nav>
+
+            {/* …and collapses behind this button on phones. */}
+            <button
+              type="button"
+              className="rounded-lg border border-ghost-border px-3 py-2 text-sm transition-colors hover:border-brand lg:hidden"
+              aria-label={menuOpen ? 'Close the navigation menu' : 'Open the navigation menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
+            </button>
+          </div>
         </div>
+
+        {menuOpen ? (
+          <nav
+            id="mobile-nav"
+            aria-label="Primary"
+            className="border-t border-ghost-border lg:hidden"
+          >
+            <ul className="flex flex-col gap-1 px-4 py-3 text-sm font-semibold">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    end={item.end}
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'block rounded-lg bg-ghost-surface px-3 py-2.5 text-brand'
+                        : 'block rounded-lg px-3 py-2.5 text-ghost-text-soft transition-colors hover:bg-ghost-surface hover:text-ghost-text'
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
       </header>
 
       <main id="main" className="flex-1">
